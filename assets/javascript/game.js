@@ -15,13 +15,13 @@ var numOfGuessesText = document.getElementById("numOfGuesses");
 var lettersText = document.getElementById("letters");
 var changeAudio = document.getElementById("audioSrc").src;
 
-var songs = [{s:"Bohemian Rhapsody",a:"assets/audio/Bohemian Rhapsody.mp3"},
-            {s:"Blurred Lines",a:"assets/audio/Blurred Lines.mp3"},
-            {s:"Sugar Man",a:"assets/audio/Sugar Man.mp3"},
-            {s:"Super Bass",a:"assets/audio/Super Bass.mp3"},
-            {s:"Gorilla",a:"assets/audio/Gorilla.mp3"},
-            {s:"Look At Me Now",a:"assets/audio/Look At Me Now.mp3"},
-            {s:"My Chick Bad",a:"assets/audio/My Chick Bad.mp3"}];
+var songs = [{s:"Bohemian Rhapsody",a:"assets/audio/Bohemian Rhapsody.mp3",h:"assets/images/br.jpg"},
+            {s:"Blurred Lines",a:"assets/audio/Blurred Lines.mp3",h:"assets/images/bl.jpeg"},
+            {s:"Sugar Man",a:"assets/audio/Sugar Man.mp3",h:"assets/images/sm.jpg"},
+            {s:"Super Bass",a:"assets/audio/Super Bass.mp3",h:"assets/images/sb.jpg"},
+            {s:"Gorilla",a:"assets/audio/Gorilla.mp3",h:"assets/images/g.jpg"},
+            {s:"Look At Me Now",a:"assets/audio/Look At Me Now.mp3",h:"assets/images/lamn.jpg"},
+            {s:"My Chick Bad",a:"assets/audio/My Chick Bad.mp3",h:"assets/images/mcb.jpg"}];
 
 // Creates an array that lists alphabet.
 var letterChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -40,12 +40,9 @@ function printSpan(song) {
 
 //prints the letter in th HTML span
 function printLetter(usrGuess,songIdx) {
-    //alert(usrGuess);
     for (var i=0;i<songs[songIdx].s.length;i++) {
         if (usrGuess===songs[songIdx].s[i].toLowerCase()) {
-            //alert(songs[songIdx][i]);
             document.getElementById("span"+i).textContent=usrGuess;
-            //alert(usrGuess+" --- "+letterIdx);
             guessLetter[i]=usrGuess;
         }
     }
@@ -69,6 +66,20 @@ function loadSong() {
     changeAudio=songs[nextSong].a; 
     myAudio.src=songs[nextSong].a; 
     myAudio.play(); 
+}
+
+//show or hide image
+function displayHideHint(val) {
+    if (val) {
+        var displayImage = document.getElementById("imageHint");
+        var image = document.getElementById("image");
+        image.src = songs[nextSong].h;
+        displayImage.style.display="block";
+        document.getElementById("hint").style.display = "block";
+    } else if (!val) {
+        document.getElementById("imageHint").style.display = "none";
+        document.getElementById("hint").style.display = "none";
+    }
 }
 
 resetAll();
@@ -99,6 +110,7 @@ document.onkeyup = function (event) {
                     if (guessLeftScore===0) {
                         lossesScore++;
                         lossesTally.textContent = lossesScore;
+                        nextSong++;
                         loadSong();
                         audioLoaded++;
                         resetAll();
