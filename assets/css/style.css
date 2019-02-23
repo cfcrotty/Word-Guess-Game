@@ -11,7 +11,7 @@ body {
 
 .container {
     width: 80%;
-    height: 500px;
+    height: 550px;
     border: 2px solid;
     position: relative;
     top: 0px;
@@ -48,4 +48,21 @@ body {
     z-index: 4;
     position: absolute;
     top: 0;
+}
+
+#yourHint, .close {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #4aaaa5;
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+}
+
+#yourHint:hover, .close:hover {
+    background-color: #2f6a67;
 }

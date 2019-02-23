@@ -13,19 +13,19 @@
 <body>
   <div class="container">
     <div id="game">
-      <h1>Listen and guess the song from my playlist</h1>
-      <h3>Press any key to get started!</h3>
+      <h1>Listen and Guess the Songs from My Playlist</h1>
+      <h3>Press Any Key to Get Started!</h3>
       <p><b>Wins:</b></p>
       <p><span id="wins">0</span></p>
       <p><b>Losses:</b></p>
       <p><span id="losses">0</span></p>
-      <p><b>Current word:</b></p>
+      <p><b>Current Word:</b></p>
       <p><span id="currentWord"></span></p>
-      <p><b>Number of guesses</b></p>
+      <p><b>Number of Guesses Remaining</b></p>
       <p> <span id="numOfGuesses">10</span></p>
-      <p><b>Letters already guessed:</b></p>
-      <p><span id="letters"></span></p>
-      <p><button id="yourHint" onclick="displayHideHint(1);">Hint</button></p>
+      <p><b>Letters Already Guessed:</b></p>
+      <p><span id="letters"></span>&nbsp;</p>
+      <p><button id="yourHint" onclick="wordGame.displayHideHint(1);">Hint</button></p>
     </div>
     <div style="display:none;">
       <audio id="myAudio" controls>
@@ -38,8 +38,8 @@
   <div id="imageHint" class="fullBack">
   </div>
   <div id="hint" class="fullImage">
-      <img id="image" style="width:400px;height:300px;" src="assets/images/ep_naturalwhite.png">
-      <input type="button" class="close" onclick="displayHideHint(0);" value="close">
+      <input type="button" class="close" onclick="wordGame.displayHideHint(0);" value="close">
+      <img id="image" style="width:400px;height:300px;" src="">
     </div>
   <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
