@@ -147,7 +147,6 @@ document.onkeyup = function (event) {
     } else {
         alert("Game Over");
         myAudio.pause(); 
-        //return;
+        return;
     }
-    //alert(nextSong);
 };
