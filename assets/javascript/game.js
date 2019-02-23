@@ -115,7 +115,7 @@ document.onkeyup = function (event) {
             if (chk1<0) {
                 alert("Please enter letters from a/A to z/Z only.");
             } else {
-                lettersText.textContent += userGuess+",";
+                lettersText.textContent += userGuess.toUpperCase()+" ";
                 if (chk<0) {
                     guessLeftScore--;
                     numOfGuessesText.textContent = guessLeftScore;
