@@ -24,7 +24,7 @@ var songs = [{s:"Bohemian Rhapsody",a:"assets/audio/Bohemian Rhapsody.mp3",h:"as
             {s:"My Chick Bad",a:"assets/audio/My Chick Bad.mp3",h:"assets/images/mcb.jpg"}];
 
 // Creates an array that lists alphabet.
-var letterChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+//var letterChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 //object wordGame has functions used in the game
 var wordGame = {
@@ -108,7 +108,8 @@ document.onkeyup = function (event) {
         var userGuess = event.key;
         userGuess = userGuess.toLowerCase();
         var chk = songs[nextSong].s.toLowerCase().indexOf(userGuess);
-        var chk1 = letterChoices.indexOf(userGuess);
+        //var chk1 = letterChoices.indexOf(userGuess);
+        var chk1 = userGuess.search(/^[a-zA-Z]+$/);
         var letterRepeat = lettersArr.indexOf(userGuess);
 
         if (letterRepeat<0) {
@@ -123,6 +124,7 @@ document.onkeyup = function (event) {
                     if (guessLeftScore===0) {
                         lossesScore++;
                         lossesTally.textContent = lossesScore;
+                        alert("The song is "+songs[nextSong].s+".");
                         nextSong++;
                         wordGame.loadSong();
                         audioLoaded++;
@@ -139,6 +141,7 @@ document.onkeyup = function (event) {
         if (!(songs.length <= nextSong) && songs[nextSong].s.toLowerCase().replace(/[ \s]/g, '')===userWord) {
             winScore++;
             winsTally.textContent = winScore;
+            alert("The song is "+songs[nextSong].s+".");
             nextSong++;
             wordGame.loadSong();
             audioLoaded++;
